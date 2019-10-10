@@ -1,10 +1,11 @@
-var planetPromise=d3.json("planets.json")
+var planetPromise = d3.json("planets.json")
     planetPromise.then(
     function(data)
         {
             A1(data)
             A2(data)
             B3(data)
+            B4(data)
         } )
 
 //A1
@@ -25,10 +26,11 @@ var A2=function(data)
     .text(function(d)
          {
         return d 
+        return data
     })
         }
    
-//A3
+//B1
 var planetPromise=d3.json("planets.json")
     planetPromise.then(
     function(data)
@@ -36,16 +38,53 @@ var planetPromise=d3.json("planets.json")
             console.log(planetPromise)
         })
 
-//A4
+//B3
 var B3=function(data)
     {
-        var pDiv=d3.select("#B3")
-        .selectAll("img")
-        .data("planets.json")
+        var p2=d3.select("#B3")   
+        .selectAll("div")
+        .data("planetPromise")
+        //I think the .data input is wrong, but I'm not sure how to get the actual pictures in there
         .enter()
         .append("img")
         .attr("src", function(d)
+              //Not sure about the "src" either
              {
             return d
         })
     }
+
+//B4
+d3.select("#B4").append("p").text("Names of Planets");
+d3.select("#B4").append("ol")
+var B4=function(data)
+    {
+    var pDiv=d3.select("#B4")        
+    .selectAll("li")
+    .data("planetPromise")
+    //This is obviously wrong, but I'm not sure how to get the info I need from within the converted json file
+    .enter()
+    .append("li")
+    .text(function(d)
+         {
+        return d 
+    })
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
