@@ -39,35 +39,32 @@ var planetPromise=d3.json("planets.json")
         })
 
 //B3
-var B3=function(data)
+var B3=function(planets)
     {
         var p2=d3.select("#B3")   
         .selectAll("div")
-        .data("planetPromise")
-        //I think the .data input is wrong, but I'm not sure how to get the actual pictures in there
+        .data(planets)
         .enter()
         .append("img")
-        .attr("src", function(d)
-              //Not sure about the "src" either
+        .attr("src", function(planet)
              {
-            return d
+            return planet.img;
         })
     }
 
 //B4
-d3.select("#B4").append("p").text("Names of Planets");
-d3.select("#B4").append("ol")
-var B4=function(data)
+
+var B4=function(planets)
     {
-    var pDiv=d3.select("#B4")        
+    d3.select("#B4").append("p").text("Names of Planets");
+        var pDiv=d3.select("#B4").append("ol")
     .selectAll("li")
-    .data("planetPromise")
-    //This is obviously wrong, but I'm not sure how to get the info I need from within the converted json file
+    .data(planets)
     .enter()
     .append("li")
-    .text(function(d)
+    .text(function(planet)
          {
-        return d 
+        return planet.name
     })
         }
 
